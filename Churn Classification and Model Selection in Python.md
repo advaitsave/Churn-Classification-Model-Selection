@@ -1,46 +1,8 @@
 
-<b><font size = "6">Churn Classification and Model Selection in Python</font></b>
+# Churn Classification and Model Selection in Python
 
 <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Importing-Packages" data-toc-modified-id="Importing-Packages-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Importing Packages</a></span></li><li><span><a href="#Problem-Statement" data-toc-modified-id="Problem-Statement-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Problem Statement</a></span></li><li><span><a href="#Basic-EDA" data-toc-modified-id="Basic-EDA-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Basic EDA</a></span></li><li><span><a href="#Analyze-data-for-data-integrity-check" data-toc-modified-id="Analyze-data-for-data-integrity-check-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Analyze data for data integrity check</a></span></li><li><span><a href="#Analyzing-the-data-using-visalization:" data-toc-modified-id="Analyzing-the-data-using-visalization:-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Analyzing the data using visalization:</a></span><ul class="toc-item"><li><span><a href="#Correlation-between-the-features" data-toc-modified-id="Correlation-between-the-features-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Correlation between the features</a></span></li><li><span><a href="#Missing-data-check" data-toc-modified-id="Missing-data-check-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Missing data check</a></span></li><li><span><a href="#Analyze-relationship-between-features,-and-target-variable" data-toc-modified-id="Analyze-relationship-between-features,-and-target-variable-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Analyze relationship between features, and target variable</a></span></li></ul></li><li><span><a href="#Data-Preperation" data-toc-modified-id="Data-Preperation-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Data Preperation</a></span><ul class="toc-item"><li><span><a href="#Define-Following:" data-toc-modified-id="Define-Following:-6.1"><span class="toc-item-num">6.1&nbsp;&nbsp;</span>Define Following:</a></span></li><li><span><a href="#Convert-categorical-variable-into-dummy/indicator-variables" data-toc-modified-id="Convert-categorical-variable-into-dummy/indicator-variables-6.2"><span class="toc-item-num">6.2&nbsp;&nbsp;</span>Convert categorical variable into dummy/indicator variables</a></span></li><li><span><a href="#Splitting-into-train-and-test-datasets" data-toc-modified-id="Splitting-into-train-and-test-datasets-6.3"><span class="toc-item-num">6.3&nbsp;&nbsp;</span>Splitting into train and test datasets</a></span></li></ul></li><li><span><a href="#Model-training-and-evaluation-of-different-classifiers" data-toc-modified-id="Model-training-and-evaluation-of-different-classifiers-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Model training and evaluation of different classifiers</a></span><ul class="toc-item"><li><span><a href="#Logistic-Regression" data-toc-modified-id="Logistic-Regression-7.1"><span class="toc-item-num">7.1&nbsp;&nbsp;</span>Logistic Regression</a></span><ul class="toc-item"><li><span><a href="#Next-Question-:-Identify-optimal-probabilty-threshold-?" data-toc-modified-id="Next-Question-:-Identify-optimal-probabilty-threshold-?-7.1.1"><span class="toc-item-num">7.1.1&nbsp;&nbsp;</span>Next Question : Identify optimal probabilty threshold ?</a></span></li></ul></li><li><span><a href="#Naive-Bayes" data-toc-modified-id="Naive-Bayes-7.2"><span class="toc-item-num">7.2&nbsp;&nbsp;</span>Naive Bayes</a></span></li><li><span><a href="#Decision-Tree" data-toc-modified-id="Decision-Tree-7.3"><span class="toc-item-num">7.3&nbsp;&nbsp;</span>Decision Tree</a></span><ul class="toc-item"><li><span><a href="#Visualizing-the-decision-tree" data-toc-modified-id="Visualizing-the-decision-tree-7.3.1"><span class="toc-item-num">7.3.1&nbsp;&nbsp;</span>Visualizing the decision tree</a></span></li></ul></li><li><span><a href="#Random-Forest" data-toc-modified-id="Random-Forest-7.4"><span class="toc-item-num">7.4&nbsp;&nbsp;</span>Random Forest</a></span><ul class="toc-item"><li><span><a href="#Saving-and-loading-the-model" data-toc-modified-id="Saving-and-loading-the-model-7.4.1"><span class="toc-item-num">7.4.1&nbsp;&nbsp;</span>Saving and loading the model</a></span></li></ul></li><li><span><a href="#Gradient-Boosting-Classifier" data-toc-modified-id="Gradient-Boosting-Classifier-7.5"><span class="toc-item-num">7.5&nbsp;&nbsp;</span>Gradient Boosting Classifier</a></span></li><li><span><a href="#XGBoost" data-toc-modified-id="XGBoost-7.6"><span class="toc-item-num">7.6&nbsp;&nbsp;</span>XGBoost</a></span></li></ul></li><li><span><a href="#Hyperparameter-tuning-using-GridSearchCV" data-toc-modified-id="Hyperparameter-tuning-using-GridSearchCV-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Hyperparameter tuning using GridSearchCV</a></span><ul class="toc-item"><li><span><a href="#Random-Forest-Hyper-parameter-tuning-using-GridSearchCV" data-toc-modified-id="Random-Forest-Hyper-parameter-tuning-using-GridSearchCV-8.1"><span class="toc-item-num">8.1&nbsp;&nbsp;</span>Random Forest Hyper-parameter tuning using GridSearchCV</a></span><ul class="toc-item"><li><span><a href="#Plot-Validation-Curve-for-&quot;n_estimators&quot;-parameter-of-Random-Forest-with-&quot;Test-Accuracy&quot;-as-the-scoring-metric" data-toc-modified-id="Plot-Validation-Curve-for-&quot;n_estimators&quot;-parameter-of-Random-Forest-with-&quot;Test-Accuracy&quot;-as-the-scoring-metric-8.1.1"><span class="toc-item-num">8.1.1&nbsp;&nbsp;</span>Plot Validation Curve for "n_estimators" parameter of Random Forest with "Test Accuracy" as the scoring metric</a></span></li></ul></li><li><span><a href="#Optimizing-RF-model-with-Gridsearch" data-toc-modified-id="Optimizing-RF-model-with-Gridsearch-8.2"><span class="toc-item-num">8.2&nbsp;&nbsp;</span>Optimizing RF model with Gridsearch</a></span><ul class="toc-item"><li><span><a href="#Plot-Validation-Curve-for-the-RF-Hypertuning" data-toc-modified-id="Plot-Validation-Curve-for-the-RF-Hypertuning-8.2.1"><span class="toc-item-num">8.2.1&nbsp;&nbsp;</span>Plot Validation Curve for the RF Hypertuning</a></span></li><li><span><a href="#Best-estimator,-tuned-parameters-and-corresponding-best-score-using-GridSearchCV" data-toc-modified-id="Best-estimator,-tuned-parameters-and-corresponding-best-score-using-GridSearchCV-8.2.2"><span class="toc-item-num">8.2.2&nbsp;&nbsp;</span>Best estimator, tuned parameters and corresponding best score using GridSearchCV</a></span></li><li><span><a href="#Optimizing-RF-model-with-Optimal-Decision-Threshold" data-toc-modified-id="Optimizing-RF-model-with-Optimal-Decision-Threshold-8.2.3"><span class="toc-item-num">8.2.3&nbsp;&nbsp;</span>Optimizing RF model with Optimal Decision Threshold</a></span></li><li><span><a href="#Evaluate-Random-Forest-tuned-model-using-the-new-threshold-(0.3)" data-toc-modified-id="Evaluate-Random-Forest-tuned-model-using-the-new-threshold-(0.3)-8.2.4"><span class="toc-item-num">8.2.4&nbsp;&nbsp;</span>Evaluate Random Forest tuned model using the new threshold (0.3)</a></span></li></ul></li></ul></li><li><span><a href="#Ensembling" data-toc-modified-id="Ensembling-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>Ensembling</a></span><ul class="toc-item"><li><span><a href="#Implementing-a-Soft-Voting-Ensemble-Classifier" data-toc-modified-id="Implementing-a-Soft-Voting-Ensemble-Classifier-9.1"><span class="toc-item-num">9.1&nbsp;&nbsp;</span>Implementing a Soft Voting Ensemble Classifier</a></span></li></ul></li><li><span><a href="#Detailed-model-comparison" data-toc-modified-id="Detailed-model-comparison-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Detailed model comparison</a></span><ul class="toc-item"><li><span><a href="#Heatmap-for-performance-metrics-across-models" data-toc-modified-id="Heatmap-for-performance-metrics-across-models-10.1"><span class="toc-item-num">10.1&nbsp;&nbsp;</span>Heatmap for performance metrics across models</a></span></li><li><span><a href="#ROC-Curves-comparison-across-all-classifiers" data-toc-modified-id="ROC-Curves-comparison-across-all-classifiers-10.2"><span class="toc-item-num">10.2&nbsp;&nbsp;</span>ROC Curves comparison across all classifiers</a></span></li><li><span><a href="#Visual-comparison-of-key-performance-metric-across-all-classifiers" data-toc-modified-id="Visual-comparison-of-key-performance-metric-across-all-classifiers-10.3"><span class="toc-item-num">10.3&nbsp;&nbsp;</span>Visual comparison of key performance metric across all classifiers</a></span></li></ul></li><li><span><a href="#Whiteboxing-your-Blackbox-model" data-toc-modified-id="Whiteboxing-your-Blackbox-model-11"><span class="toc-item-num">11&nbsp;&nbsp;</span>Whiteboxing your Blackbox model</a></span><ul class="toc-item"><li><span><a href="#Feature-importance-based-on-models" data-toc-modified-id="Feature-importance-based-on-models-11.1"><span class="toc-item-num">11.1&nbsp;&nbsp;</span>Feature importance based on models</a></span></li><li><span><a href="#Get-significant-variables-based-on-variable-importance" data-toc-modified-id="Get-significant-variables-based-on-variable-importance-11.2"><span class="toc-item-num">11.2&nbsp;&nbsp;</span>Get significant variables based on variable importance</a></span></li><li><span><a href="#Calculate-direction-of-each-feature-with-respect-to-target" data-toc-modified-id="Calculate-direction-of-each-feature-with-respect-to-target-11.3"><span class="toc-item-num">11.3&nbsp;&nbsp;</span>Calculate direction of each feature with respect to target</a></span></li><li><span><a href="#Mean-and-direction-of-model-significant-variables-with-respect-to-target" data-toc-modified-id="Mean-and-direction-of-model-significant-variables-with-respect-to-target-11.4"><span class="toc-item-num">11.4&nbsp;&nbsp;</span>Mean and direction of model significant variables with respect to target</a></span></li><li><span><a href="#Visualizing-significant-variables-based-on-models" data-toc-modified-id="Visualizing-significant-variables-based-on-models-11.5"><span class="toc-item-num">11.5&nbsp;&nbsp;</span>Visualizing significant variables based on models</a></span></li></ul></li><li><span><a href="#Local-Interpretable-Model-Agnostic-Explanations-(LIME)" data-toc-modified-id="Local-Interpretable-Model-Agnostic-Explanations-(LIME)-12"><span class="toc-item-num">12&nbsp;&nbsp;</span>Local Interpretable Model-Agnostic Explanations (LIME)</a></span><ul class="toc-item"><li><span><a href="#Extract-wrong-predictions-of-a-classifier" data-toc-modified-id="Extract-wrong-predictions-of-a-classifier-12.1"><span class="toc-item-num">12.1&nbsp;&nbsp;</span>Extract wrong predictions of a classifier</a></span></li><li><span><a href="#Build-Logistic-Regression-LIME-explainer" data-toc-modified-id="Build-Logistic-Regression-LIME-explainer-12.2"><span class="toc-item-num">12.2&nbsp;&nbsp;</span>Build Logistic Regression LIME explainer</a></span></li><li><span><a href="#Build-Random-Forest---tuned-LIME-explainer" data-toc-modified-id="Build-Random-Forest---tuned-LIME-explainer-12.3"><span class="toc-item-num">12.3&nbsp;&nbsp;</span>Build Random Forest - tuned LIME explainer</a></span></li><li><span><a href="#Comparison-of-LIME-explanations-for-Logistic-Regression-and-GBM-for-a-False-Postive" data-toc-modified-id="Comparison-of-LIME-explanations-for-Logistic-Regression-and-GBM-for-a-False-Postive-12.4"><span class="toc-item-num">12.4&nbsp;&nbsp;</span>Comparison of LIME explanations for Logistic Regression and GBM for a False Postive</a></span></li></ul></li><li><span><a href="#Next-steps-for-futher-improving-performance-of-Classifier-solution" data-toc-modified-id="Next-steps-for-futher-improving-performance-of-Classifier-solution-13"><span class="toc-item-num">13&nbsp;&nbsp;</span>Next steps for futher improving performance of Classifier solution</a></span></li><li><span><a href="#Support-Functions" data-toc-modified-id="Support-Functions-14"><span class="toc-item-num">14&nbsp;&nbsp;</span>Support Functions</a></span></li></ul></div>
-
-
-```python
-from IPython.display import HTML
-
-HTML('''<script>
-code_show=true; 
-function code_toggle() {
- if (code_show){
- $('div.input').hide();
- } else {
- $('div.input').show();
- }
- code_show = !code_show
-} 
-$( document ).ready(code_toggle);
-</script>
-<form action="javascript:code_toggle()"><input type="submit" value="Click here to toggle on/off the raw code."></form>''')
-```
-
-
-
-
-<script>
-code_show=true; 
-function code_toggle() {
- if (code_show){
- $('div.input').hide();
- } else {
- $('div.input').show();
- }
- code_show = !code_show
-} 
-$( document ).ready(code_toggle);
-</script>
-<form action="javascript:code_toggle()"><input type="submit" value="Click here to toggle on/off the raw code."></form>
-
-
+<div class="toc"><ul class="toc-item"><li><span><a href="#Churn-Classification-and-Model-Selection-in-Python" data-toc-modified-id="Churn-Classification-and-Model-Selection-in-Python-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Churn Classification and Model Selection in Python</a></span><ul class="toc-item"><li><span><a href="#Importing-Packages" data-toc-modified-id="Importing-Packages-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Importing Packages</a></span></li><li><span><a href="#Problem-Statement" data-toc-modified-id="Problem-Statement-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Problem Statement</a></span></li><li><span><a href="#Basic-EDA" data-toc-modified-id="Basic-EDA-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Basic EDA</a></span></li><li><span><a href="#Analyze-data-for-data-integrity-check" data-toc-modified-id="Analyze-data-for-data-integrity-check-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Analyze data for data integrity check</a></span></li><li><span><a href="#Analyzing-the-data-using-visalization:" data-toc-modified-id="Analyzing-the-data-using-visalization:-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Analyzing the data using visalization:</a></span><ul class="toc-item"><li><span><a href="#Correlation-between-the-features" data-toc-modified-id="Correlation-between-the-features-1.5.1"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Correlation between the features</a></span></li><li><span><a href="#Missing-data-check" data-toc-modified-id="Missing-data-check-1.5.2"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Missing data check</a></span></li><li><span><a href="#Analyze-relationship-between-features,-and-target-variable" data-toc-modified-id="Analyze-relationship-between-features,-and-target-variable-1.5.3"><span class="toc-item-num">1.5.3&nbsp;&nbsp;</span>Analyze relationship between features, and target variable</a></span></li></ul></li><li><span><a href="#Data-Preperation" data-toc-modified-id="Data-Preperation-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Data Preperation</a></span><ul class="toc-item"><li><span><a href="#Define-Following:" data-toc-modified-id="Define-Following:-1.6.1"><span class="toc-item-num">1.6.1&nbsp;&nbsp;</span>Define Following:</a></span></li><li><span><a href="#Convert-categorical-variable-into-dummy/indicator-variables" data-toc-modified-id="Convert-categorical-variable-into-dummy/indicator-variables-1.6.2"><span class="toc-item-num">1.6.2&nbsp;&nbsp;</span>Convert categorical variable into dummy/indicator variables</a></span></li><li><span><a href="#Splitting-into-train-and-test-datasets" data-toc-modified-id="Splitting-into-train-and-test-datasets-1.6.3"><span class="toc-item-num">1.6.3&nbsp;&nbsp;</span>Splitting into train and test datasets</a></span></li></ul></li><li><span><a href="#Model-training-and-evaluation-of-different-classifiers" data-toc-modified-id="Model-training-and-evaluation-of-different-classifiers-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Model training and evaluation of different classifiers</a></span><ul class="toc-item"><li><span><a href="#Logistic-Regression" data-toc-modified-id="Logistic-Regression-1.7.1"><span class="toc-item-num">1.7.1&nbsp;&nbsp;</span>Logistic Regression</a></span><ul class="toc-item"><li><span><a href="#Next-Question-:-Identify-optimal-probabilty-threshold-?" data-toc-modified-id="Next-Question-:-Identify-optimal-probabilty-threshold-?-1.7.1.1"><span class="toc-item-num">1.7.1.1&nbsp;&nbsp;</span>Next Question : Identify optimal probabilty threshold ?</a></span></li></ul></li><li><span><a href="#Naive-Bayes" data-toc-modified-id="Naive-Bayes-1.7.2"><span class="toc-item-num">1.7.2&nbsp;&nbsp;</span>Naive Bayes</a></span></li><li><span><a href="#Decision-Tree" data-toc-modified-id="Decision-Tree-1.7.3"><span class="toc-item-num">1.7.3&nbsp;&nbsp;</span>Decision Tree</a></span><ul class="toc-item"><li><span><a href="#Visualizing-the-decision-tree" data-toc-modified-id="Visualizing-the-decision-tree-1.7.3.1"><span class="toc-item-num">1.7.3.1&nbsp;&nbsp;</span>Visualizing the decision tree</a></span></li></ul></li><li><span><a href="#Random-Forest" data-toc-modified-id="Random-Forest-1.7.4"><span class="toc-item-num">1.7.4&nbsp;&nbsp;</span>Random Forest</a></span><ul class="toc-item"><li><span><a href="#Saving-and-loading-the-model" data-toc-modified-id="Saving-and-loading-the-model-1.7.4.1"><span class="toc-item-num">1.7.4.1&nbsp;&nbsp;</span>Saving and loading the model</a></span></li></ul></li><li><span><a href="#Gradient-Boosting-Classifier" data-toc-modified-id="Gradient-Boosting-Classifier-1.7.5"><span class="toc-item-num">1.7.5&nbsp;&nbsp;</span>Gradient Boosting Classifier</a></span></li><li><span><a href="#XGBoost" data-toc-modified-id="XGBoost-1.7.6"><span class="toc-item-num">1.7.6&nbsp;&nbsp;</span>XGBoost</a></span></li></ul></li><li><span><a href="#Hyperparameter-tuning-using-GridSearchCV" data-toc-modified-id="Hyperparameter-tuning-using-GridSearchCV-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Hyperparameter tuning using GridSearchCV</a></span><ul class="toc-item"><li><span><a href="#Random-Forest-Hyper-parameter-tuning-using-GridSearchCV" data-toc-modified-id="Random-Forest-Hyper-parameter-tuning-using-GridSearchCV-1.8.1"><span class="toc-item-num">1.8.1&nbsp;&nbsp;</span>Random Forest Hyper-parameter tuning using GridSearchCV</a></span><ul class="toc-item"><li><span><a href="#Plot-Validation-Curve-for-&quot;n_estimators&quot;-parameter-of-Random-Forest-with-&quot;Test-Accuracy&quot;-as-the-scoring-metric" data-toc-modified-id="Plot-Validation-Curve-for-&quot;n_estimators&quot;-parameter-of-Random-Forest-with-&quot;Test-Accuracy&quot;-as-the-scoring-metric-1.8.1.1"><span class="toc-item-num">1.8.1.1&nbsp;&nbsp;</span>Plot Validation Curve for "n_estimators" parameter of Random Forest with "Test Accuracy" as the scoring metric</a></span></li></ul></li><li><span><a href="#Optimizing-RF-model-with-Gridsearch" data-toc-modified-id="Optimizing-RF-model-with-Gridsearch-1.8.2"><span class="toc-item-num">1.8.2&nbsp;&nbsp;</span>Optimizing RF model with Gridsearch</a></span><ul class="toc-item"><li><span><a href="#Plot-Validation-Curve-for-the-RF-Hypertuning" data-toc-modified-id="Plot-Validation-Curve-for-the-RF-Hypertuning-1.8.2.1"><span class="toc-item-num">1.8.2.1&nbsp;&nbsp;</span>Plot Validation Curve for the RF Hypertuning</a></span></li><li><span><a href="#Best-estimator,-tuned-parameters-and-corresponding-best-score-using-GridSearchCV" data-toc-modified-id="Best-estimator,-tuned-parameters-and-corresponding-best-score-using-GridSearchCV-1.8.2.2"><span class="toc-item-num">1.8.2.2&nbsp;&nbsp;</span>Best estimator, tuned parameters and corresponding best score using GridSearchCV</a></span></li><li><span><a href="#Optimizing-RF-model-with-Optimal-Decision-Threshold" data-toc-modified-id="Optimizing-RF-model-with-Optimal-Decision-Threshold-1.8.2.3"><span class="toc-item-num">1.8.2.3&nbsp;&nbsp;</span>Optimizing RF model with Optimal Decision Threshold</a></span></li><li><span><a href="#Evaluate-Random-Forest-tuned-model-using-the-new-threshold-(0.3)" data-toc-modified-id="Evaluate-Random-Forest-tuned-model-using-the-new-threshold-(0.3)-1.8.2.4"><span class="toc-item-num">1.8.2.4&nbsp;&nbsp;</span>Evaluate Random Forest tuned model using the new threshold (0.3)</a></span></li></ul></li></ul></li><li><span><a href="#Ensembling" data-toc-modified-id="Ensembling-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Ensembling</a></span><ul class="toc-item"><li><span><a href="#Implementing-a-Soft-Voting-Ensemble-Classifier" data-toc-modified-id="Implementing-a-Soft-Voting-Ensemble-Classifier-1.9.1"><span class="toc-item-num">1.9.1&nbsp;&nbsp;</span>Implementing a Soft Voting Ensemble Classifier</a></span></li></ul></li><li><span><a href="#Detailed-model-comparison" data-toc-modified-id="Detailed-model-comparison-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Detailed model comparison</a></span><ul class="toc-item"><li><span><a href="#Heatmap-for-performance-metrics-across-models" data-toc-modified-id="Heatmap-for-performance-metrics-across-models-1.10.1"><span class="toc-item-num">1.10.1&nbsp;&nbsp;</span>Heatmap for performance metrics across models</a></span></li><li><span><a href="#ROC-Curves-comparison-across-all-classifiers" data-toc-modified-id="ROC-Curves-comparison-across-all-classifiers-1.10.2"><span class="toc-item-num">1.10.2&nbsp;&nbsp;</span>ROC Curves comparison across all classifiers</a></span></li><li><span><a href="#Visual-comparison-of-key-performance-metric-across-all-classifiers" data-toc-modified-id="Visual-comparison-of-key-performance-metric-across-all-classifiers-1.10.3"><span class="toc-item-num">1.10.3&nbsp;&nbsp;</span>Visual comparison of key performance metric across all classifiers</a></span></li></ul></li><li><span><a href="#Whiteboxing-your-Blackbox-model" data-toc-modified-id="Whiteboxing-your-Blackbox-model-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Whiteboxing your Blackbox model</a></span><ul class="toc-item"><li><span><a href="#Feature-importance-based-on-models" data-toc-modified-id="Feature-importance-based-on-models-1.11.1"><span class="toc-item-num">1.11.1&nbsp;&nbsp;</span>Feature importance based on models</a></span></li><li><span><a href="#Get-significant-variables-based-on-variable-importance" data-toc-modified-id="Get-significant-variables-based-on-variable-importance-1.11.2"><span class="toc-item-num">1.11.2&nbsp;&nbsp;</span>Get significant variables based on variable importance</a></span></li><li><span><a href="#Calculate-direction-of-each-feature-with-respect-to-target" data-toc-modified-id="Calculate-direction-of-each-feature-with-respect-to-target-1.11.3"><span class="toc-item-num">1.11.3&nbsp;&nbsp;</span>Calculate direction of each feature with respect to target</a></span></li><li><span><a href="#Mean-and-direction-of-model-significant-variables-with-respect-to-target" data-toc-modified-id="Mean-and-direction-of-model-significant-variables-with-respect-to-target-1.11.4"><span class="toc-item-num">1.11.4&nbsp;&nbsp;</span>Mean and direction of model significant variables with respect to target</a></span></li><li><span><a href="#Visualizing-significant-variables-based-on-models" data-toc-modified-id="Visualizing-significant-variables-based-on-models-1.11.5"><span class="toc-item-num">1.11.5&nbsp;&nbsp;</span>Visualizing significant variables based on models</a></span></li></ul></li><li><span><a href="#Local-Interpretable-Model-Agnostic-Explanations-(LIME)" data-toc-modified-id="Local-Interpretable-Model-Agnostic-Explanations-(LIME)-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Local Interpretable Model-Agnostic Explanations (LIME)</a></span><ul class="toc-item"><li><span><a href="#Extract-wrong-predictions-of-a-classifier" data-toc-modified-id="Extract-wrong-predictions-of-a-classifier-1.12.1"><span class="toc-item-num">1.12.1&nbsp;&nbsp;</span>Extract wrong predictions of a classifier</a></span></li><li><span><a href="#Build-Logistic-Regression-LIME-explainer" data-toc-modified-id="Build-Logistic-Regression-LIME-explainer-1.12.2"><span class="toc-item-num">1.12.2&nbsp;&nbsp;</span>Build Logistic Regression LIME explainer</a></span></li><li><span><a href="#Build-Random-Forest---tuned-LIME-explainer" data-toc-modified-id="Build-Random-Forest---tuned-LIME-explainer-1.12.3"><span class="toc-item-num">1.12.3&nbsp;&nbsp;</span>Build Random Forest - tuned LIME explainer</a></span></li><li><span><a href="#Comparison-of-LIME-explanations-for-Logistic-Regression-and-GBM-for-a-False-Postive" data-toc-modified-id="Comparison-of-LIME-explanations-for-Logistic-Regression-and-GBM-for-a-False-Postive-1.12.4"><span class="toc-item-num">1.12.4&nbsp;&nbsp;</span>Comparison of LIME explanations for Logistic Regression and GBM for a False Postive</a></span></li></ul></li><li><span><a href="#Next-steps-for-futher-improving-performance-of-Classifier-solution" data-toc-modified-id="Next-steps-for-futher-improving-performance-of-Classifier-solution-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>Next steps for futher improving performance of Classifier solution</a></span></li></ul></li></ul></div>
 
 ## Importing Packages
 
@@ -617,7 +579,7 @@ plt.show()
 ```
 
 
-![png](output_21_0.png)
+![png](output_20_0.png)
 
 
 
@@ -782,7 +744,7 @@ plt.show()
 ```
 
 
-![png](output_26_0.png)
+![png](output_25_0.png)
 
 
 ## Data Preperation
@@ -936,7 +898,7 @@ plt.show()
     
 
 
-![png](output_46_1.png)
+![png](output_45_1.png)
 
 
 <cite><b>Precision, recall, F1-score</b></cite>
@@ -1000,7 +962,7 @@ plt.show()
 ```
 
 
-![png](output_51_0.png)
+![png](output_50_0.png)
 
 
 
@@ -1017,14 +979,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_52_1.png)
+![png](output_51_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_52_3.png)
+![png](output_51_3.png)
 
 
 
@@ -1121,14 +1083,14 @@ eval_results_compare
     
 
 
-![png](output_58_1.png)
+![png](output_57_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_58_3.png)
+![png](output_57_3.png)
 
 
 
@@ -1303,7 +1265,7 @@ Image(graph.create_png())
 
 
 
-![png](output_64_0.png)
+![png](output_63_0.png)
 
 
 
@@ -1323,14 +1285,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_66_1.png)
+![png](output_65_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_66_3.png)
+![png](output_65_3.png)
 
 
 
@@ -1462,14 +1424,14 @@ eval_result_RF = evaluate_model(model_name, trained_model_rf, xtrain, xtest, ytr
     
 
 
-![png](output_74_1.png)
+![png](output_73_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_74_3.png)
+![png](output_73_3.png)
 
 
 
@@ -1608,14 +1570,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_81_1.png)
+![png](output_80_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_81_3.png)
+![png](output_80_3.png)
 
 
 
@@ -1763,14 +1725,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_87_1.png)
+![png](output_86_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_87_3.png)
+![png](output_86_3.png)
 
 
 
@@ -1972,7 +1934,7 @@ plt.show()
     
 
 
-![png](output_93_1.png)
+![png](output_92_1.png)
 
 
 ### Optimizing RF model with Gridsearch
@@ -2026,7 +1988,7 @@ plot_grid_search(tuning_rf.cv_results_, param_grid['n_estimators'], param_grid['
 ```
 
 
-![png](output_97_0.png)
+![png](output_96_0.png)
 
 
 #### Best estimator, tuned parameters and corresponding best score using GridSearchCV
@@ -2054,14 +2016,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_100_1.png)
+![png](output_99_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_100_3.png)
+![png](output_99_3.png)
 
 
 
@@ -2228,7 +2190,7 @@ sns.distplot(prob_test[:,1])
 
 
 
-![png](output_107_1.png)
+![png](output_106_1.png)
 
 
 Check Precision-Recall vs Decision Threshold Plot to set the optimal threshold
@@ -2241,7 +2203,7 @@ plot_precision_recall_vs_threshold(p, r, thresholds)
 ```
 
 
-![png](output_109_0.png)
+![png](output_108_0.png)
 
 
 #### Evaluate Random Forest tuned model using the new threshold (0.3)
@@ -2279,14 +2241,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_112_1.png)
+![png](output_111_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_112_3.png)
+![png](output_111_3.png)
 
 
 
@@ -2479,14 +2441,14 @@ eval_results_compare.reset_index(drop=True,inplace=True)
     
 
 
-![png](output_118_1.png)
+![png](output_117_1.png)
 
 
     ROC curve for the validaton Sample
     
 
 
-![png](output_118_3.png)
+![png](output_117_3.png)
 
 
 
@@ -3000,7 +2962,7 @@ plt.show()   # Display
 ```
 
 
-![png](output_126_0.png)
+![png](output_125_0.png)
 
 
 ### Visual comparison of key performance metric across all classifiers
@@ -3025,7 +2987,7 @@ plot_model_eval(eval_results_compare,metric)
 ```
 
 
-![png](output_129_0.png)
+![png](output_128_0.png)
 
 
 
@@ -3035,7 +2997,7 @@ plot_model_eval(eval_results_compare,metric)
 ```
 
 
-![png](output_130_0.png)
+![png](output_129_0.png)
 
 
 ## Whiteboxing your Blackbox model
@@ -3717,7 +3679,7 @@ plt.show()
 ```
 
 
-![png](output_144_0.png)
+![png](output_143_0.png)
 
 
 ## Local Interpretable Model-Agnostic Explanations (LIME)
